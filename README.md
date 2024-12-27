@@ -1,4 +1,4 @@
-# Mymymailsender
+# MyMailSender
 
 A simple Python wrapper for sending SMTP emails. This package lets you configure:
 - **TLS/SSL** or **plain** connections
@@ -47,7 +47,7 @@ from mymailsender import MyMailSender
 ```python
 from mymailsender import MyMailSender
 
-# Example instantiation of the Mymymailsender class
+# Example instantiation of the MyMailSender class
 mymailsender = MyMailSender(
     smtp_server="smtp.example.com",
     port=25,          # or 587 for TLS, 465 for SSL, etc.
@@ -69,7 +69,7 @@ mymailsender.send_mail(
 
 ## Configuration
 
-The `Mymymailsender` class uses a `mailsender.yaml` file for default configurations. This file should be placed in the project directory and can include the following settings:
+The `MyMailSender` class uses a `mailsender.yaml` file for default configurations. This file should be placed in the project directory and can include the following settings:
 
 ```yaml
 smtp_server: "smtp.example.com"
@@ -81,7 +81,7 @@ username: "your_username"
 password: "your_password"
 ```
 
-You can also override these settings by providing arguments when initializing the `Mymymailsender` instance:
+You can also override these settings by providing arguments when initializing the `MyMailSender` instance:
 
 ```python
 from mymailsender import MyMailSender
@@ -113,7 +113,7 @@ The available configuration parameters are:
 ```python
 from mymailsender import MyMailSender
 
-# Create the Mymymailsender
+# Create the MyMailSender
 mymail = MyMailSender(
     smtp_server="localhost",
     port=25,
