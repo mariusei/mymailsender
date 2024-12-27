@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mailsender"
-version = "0.1.4"
+name = "mymailsender"
+version = "0.1.5"
 description = "A simple Python mailer for SMTP sending."
 readme = "README.md"
 authors = [
@@ -20,4 +20,4 @@ dependencies = [
 ]
 
 [project.urls]
-"Source Code" = "https://github.com/mariusei/mailsender"
+"Source Code" = "https://github.com/mariusei/mymailsender"

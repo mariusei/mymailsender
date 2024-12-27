@@ -1,4 +1,4 @@
 # Gjør klassen enkelt tilgjengelig når du importerer "mailer"
-from .mailsender import MailSender
+from .mailsender import MyMailSender
 
-__all__ = ["MailSender"]
+__all__ = ["MyMailSender"]
