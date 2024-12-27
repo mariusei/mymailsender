@@ -1,4 +1,4 @@
-# mail_sender.py
+# my_mail_sender.py
 
 import smtplib
 import ssl
@@ -12,7 +12,7 @@ import inspect
 import yaml
 
 
-class MailSender:
+class MyMailSender:
     def __init__(
         self,
         smtp_server: Optional[str] = None,
@@ -74,13 +74,6 @@ class MailSender:
         :param filename: Navnet på konfigurasjonsfilen
         :return: Konfigurasjonen som en ordbok
         """
-        # Finn mappen til skriptet som importerer denne modulen
-        #caller_frame = inspect.stack()[1]
-        #caller_file = caller_frame.filename
-        #caller_dir = os.path.dirname(caller_file)
-        #config_path = os.path.join(caller_dir, filename)
-        # Bestem stien til konfigurasjonsfilen
-
         if config_path:
             config_file = config_path
         else:

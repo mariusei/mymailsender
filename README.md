@@ -1,4 +1,4 @@
-# MailSender
+# Mymymailsender
 
 A simple Python wrapper for sending SMTP emails. This package lets you configure:
 - **TLS/SSL** or **plain** connections
@@ -31,13 +31,13 @@ A simple Python wrapper for sending SMTP emails. This package lets you configure
    Alternatively, if you've built a wheel or `tar.gz`:
 
    ```bash
-   pip install dist/mailsender-0.1.0-py3-none-any.whl
+   pip install dist/mymailsender-0.1.0-py3-none-any.whl
    ```
 
 Once installed, you can import it anywhere in your code:
 
 ```python
-from mailsender import MailSender
+from mymailsender import MyMailSender
 ```
 
 ---
@@ -45,10 +45,10 @@ from mailsender import MailSender
 ## Quick Start
 
 ```python
-from mailsender import MailSender
+from mymailsender import MyMailSender
 
-# Example instantiation of the MailSender class
-mailsender = MailSender(
+# Example instantiation of the Mymymailsender class
+mymailsender = MyMailSender(
     smtp_server="smtp.example.com",
     port=25,          # or 587 for TLS, 465 for SSL, etc.
     use_tls=False,    # True if you want STARTTLS
@@ -57,11 +57,11 @@ mailsender = MailSender(
 )
 
 # Send a simple email
-mailsender.send_mail(
+mymailsender.send_mail(
     sender_email="me@example.com",
     recipient_emails=["you@example.org"],
     subject="Hello World",
-    body_text="This is a test email using mailsender."
+    body_text="This is a test email using mymailsender."
 )
 ```
 
@@ -69,7 +69,32 @@ mailsender.send_mail(
 
 ## Configuration
 
-When creating a `MailSender` instance, you have the following parameters:
+The `Mymymailsender` class uses a `mailsender.yaml` file for default configurations. This file should be placed in the project directory and can include the following settings:
+
+```yaml
+smtp_server: "smtp.example.com"
+port: 25
+use_tls: false
+use_ssl: false
+use_auth: false
+username: "your_username"
+password: "your_password"
+```
+
+You can also override these settings by providing arguments when initializing the `Mymymailsender` instance:
+
+```python
+from mymailsender import MyMailSender
+
+mymailsender = MyMailSender(
+    smtp_server="smtp.override.com",
+    port=587,
+    use_tls=True,
+    # Additional overrides as needed
+)
+```
+
+The available configuration parameters are:
 
 - **smtp_server** (str): The domain or IP of your SMTP server, e.g. `"smtp.gmail.com"`, `"localhost"`, etc.
 - **port** (int): The SMTP port. Often `25` or `587` (if `use_tls=True`), or `465` (if `use_ssl=True`).
@@ -86,10 +111,10 @@ When creating a `MailSender` instance, you have the following parameters:
 ### Send a Basic Email
 
 ```python
-from mailsender import MailSender
+from mymailsender import MyMailSender
 
-# Create the MailSender
-mailsender = MailSender(
+# Create the Mymymailsender
+mymail = MyMailSender(
     smtp_server="localhost",
     port=25,
     use_tls=False,
@@ -98,20 +123,20 @@ mailsender = MailSender(
 )
 
 # Send a basic text-only message
-mailsender.send_mail(
+mymail.send_mail(
     sender_email="sender@localhost",
     recipient_emails=["recipient@localhost"],
     subject="Test Email",
-    body_text="Hello from mailsender!",
+    body_text="Hello from mymailsender!",
 )
 ```
 
 ### Send an Email with Attachments
 
 ```python
-from mailsender import MailSender
+from mymailsender import MyMailSender
 
-mailsender = MailSender(
+mymail = MyMailSender(
     smtp_server="smtp.example.com",
     port=587,
     use_tls=True,
@@ -121,7 +146,7 @@ mailsender = MailSender(
     password="mypassword"
 )
 
-mailsender.send_mail(
+mymail.send_mail(
     sender_email="myuser@example.com",
     recipient_emails=["recipient@example.org"],
     subject="Hello with Attachments",
@@ -135,18 +160,22 @@ mailsender.send_mail(
 
 ### Using CC and BCC
 
+Configure some custom connection settings in `mailsender.yaml`:
+
+```yaml
+smtp_server: "smtp.example.com"
+username: myusername
+password: mypass
+```
+
+Which now allows you to initialize the `MyMailSender` instance without specifying any arguments:
+
 ```python
-from mailsender import MailSender
+from mymailsender import MyMailSender
 
-mailsender = MailSender(
-    smtp_server="smtp.example.com",
-    port=25,
-    use_tls=False,
-    use_ssl=False,
-    use_auth=False
-)
+mymail = MyMailSender()
 
-mailsender.send_mail(
+mymail.send_mail(
     sender_email="me@example.com",
     recipient_emails=["primary@example.org"],
     subject="Test CC and BCC",
