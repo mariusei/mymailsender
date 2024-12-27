@@ -1,3 +1,6 @@
+[![PyPI version](https://badge.fury.io/py/mymailsender.svg)](https://badge.fury.io/py/mymailsender)
+[![Build Status](https://github.com/mariusei/mymailsender/actions/workflows/python-publish.yml/badge.svg)](https://github.com/mariusei/mymailsender/actions/workflows/python-publish.yml)
+
 # MyMailSender
 
 A simple Python wrapper for sending SMTP emails. This package lets you configure:
